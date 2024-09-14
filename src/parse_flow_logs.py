@@ -8,6 +8,8 @@ import datetime
 class LookupTable:
     def __init__(self, filename:str):
         self._filename = filename
+        if os.path.getsize(self._filename) == 0:
+            raise EmptyFileError(self._filename)
         if not self._valid_filename():
             raise InvalidFilenameError(filename)
         self._table = self._load_table()
@@ -69,6 +71,7 @@ class FlowLog:
                 self._port_protocol_cnt[(dstport, protocol)] = self._port_protocol_cnt.get((dstport, protocol), 0) + 1
 
     def _parse_custom_logs(self, filepath:str)->None:
+        print("Parsing custom logs")
         for i, field in enumerate(CUSTOM_FLOW_LOG_FIELDS):
             if field == 'dstport':
                 dstport_index = i
