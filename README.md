@@ -56,7 +56,7 @@ python parse_flow_logs.py
 ```
 To run the python script with custom logs format run
 ```bash
-python parse_flow_logs.py --logs_format=custom
+python parse_flow_logs.py --logs_format=custom --flowlogs_filepath="../data/flowlogs_custom.txt"
 ```
 The script supports the following optional arguments if custom values are to be used:\
 1. `--logs_format`: To specify the flow log format, either default or custom.
